@@ -18,7 +18,7 @@ import com.opentable.gc.infra.connectmigrations.services.GetRestaurantAdminServi
 public class GetRestaurantAdminServiceConfiguration {
 
     @Bean("agg1")
-    public GetRestaurantAdminService getRestaurantAggregatorService(@Qualifier("rasRestaurantTypeSourceClient") RestaurantAdminServiceClient rasClient) {
+    public GetRestaurantAdminService getRestaurantService(@Qualifier("rasRestaurantTypeSourceClient") RestaurantAdminServiceClient rasClient) {
         return new GetRestaurantAdminServiceImpl(rasClient);
     }
 

@@ -35,7 +35,7 @@ public class GetRestaurantAdminServiceControllerTest {
         GetRestaurantAdminServiceResponse expectedGetRestaurantAdminServiceResponse = new GetRestaurantAdminServiceResponse(
                 190624, "C", "Guest Center Restaurant", "1.0", "US", "Guest Center - Keivan Bagheri", 1, "Active");
 
-        Mockito.when(getRestaurantAdminService.getGetRestaurantAggregatorResponse("1")).thenReturn(expectedGetRestaurantAdminServiceResponse);
+        Mockito.when(getRestaurantAdminService.getGetRestaurantResponse("1")).thenReturn(expectedGetRestaurantAdminServiceResponse);
         ResponseEntity<GetRestaurantAdminServiceResponse> actualResponse = testRestTemplate.getForEntity("/restaurants/1", GetRestaurantAdminServiceResponse.class);
         assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(actualResponse.getBody()).isEqualTo(expectedGetRestaurantAdminServiceResponse);

@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Import;
 
 import com.opentable.gc.infra.connectmigrations.clients.RestaurantAdminServiceClient;
 import com.opentable.gc.infra.connectmigrations.clients.RestaurantAdminServiceClientRAS;
-import com.opentable.gc.infra.connectmigrations.clients.extractors.SourceResponseExtractorRAS;
 
 import com.opentable.resttemplate.RestTemplateConfiguration;
 import com.opentable.resttemplate.RestTemplateFactory;
@@ -33,7 +32,6 @@ public class RestaurantAdminServiceSourceClientConfiguration {
     public SourceConfiguration rasSourceConfiguration() {
         return new SourceConfiguration(
                 rasUrl,
-                new SourceResponseExtractorRAS(),
                 rasRetryDelay,
                 rasRetryMaxDelay,
                 rasMaxRetries

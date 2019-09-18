@@ -1,18 +1,48 @@
-package com.opentable.gc.infra.connectmigrations.dto;
+package com.opentable.gc.infra.connectmigrations.model.dto.get;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Generated;
+
+@Generated("com.robohorse.robopojogenerator")
 public class EnUS{
+
+    @JsonProperty("address2")
     private String address2;
+
+    @JsonProperty("city")
     private String city;
+
+    @JsonProperty("restaurantName")
     private String restaurantName;
+
+    @JsonProperty("address1")
     private String address1;
+
+    @JsonProperty("sortableRestaurantName")
     private String sortableRestaurantName;
+
+    @JsonProperty("state")
     private String state;
+
+    @JsonProperty("crossStreet")
     private String crossStreet;
+
+    @JsonProperty("isActive")
     private boolean isActive;
+
+    @JsonProperty("executiveChef")
     private String executiveChef;
+
+    @JsonProperty("locked")
     private boolean locked;
+
+    @JsonProperty("version")
     private int version;
+
+    @JsonProperty("message")
     private String message;
+
+    @JsonProperty("messageSource")
     private String messageSource;
 
     public void setAddress2(String address2){

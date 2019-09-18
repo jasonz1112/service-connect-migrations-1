@@ -1,6 +1,12 @@
-package com.opentable.gc.infra.connectmigrations.dto;
+package com.opentable.gc.infra.connectmigrations.model.dto.get;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Generated;
+
+@Generated("com.robohorse.robopojogenerator")
 public class PublicTransit{
+
+    @JsonProperty("en-US")
     private EnUS enUS;
 
     public void setEnUS(EnUS enUS){

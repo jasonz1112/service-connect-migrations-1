@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.opentable.gc.infra.connectmigrations.model.RestaurantInfo;
 import com.opentable.gc.infra.connectmigrations.services.UpdateRestaurantAdminService;
+import com.opentable.gc.infra.connectmigrations.model.dto.update.RasPatchRequest;
 
 
 @RequestMapping("/restaurants")
@@ -23,16 +23,10 @@ public class UpdateRestaurantAdminServiceController {
     }
 
     @RequestMapping(value="/{restaurantId}", method=RequestMethod.PATCH)
-    public void updateRestaurant(@PathVariable("restaurantId") String restaurantId, @RequestBody RestaurantInfo restaurantInfo) {
+    public void updateRestaurant(@PathVariable("restaurantId") String restaurantId, @RequestBody RasPatchRequest rasPatchRequest) {
 
-        //RestaurantInfo restaurantInfo = new RestaurantInfo("1", "C");
-        /**
-        if (restaurantInfo.isInvalid()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The update should include a valid email or phone");
-        }
-         **/
 
-        updateRestaurantAdminService.updateRestaurantAggregator(restaurantId, restaurantInfo);
+        updateRestaurantAdminService.updateRestaurantServ(restaurantId, rasPatchRequest);
     }
 
 }

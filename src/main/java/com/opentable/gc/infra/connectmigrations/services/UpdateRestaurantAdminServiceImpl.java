@@ -7,10 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.server.ResponseStatusException;
+import com.opentable.gc.infra.connectmigrations.model.dto.update.RasPatchRequest;
 
 import com.opentable.gc.infra.connectmigrations.clients.RestaurantAdminServiceClient;
-import com.opentable.gc.infra.connectmigrations.clients.SourceRequest;
-import com.opentable.gc.infra.connectmigrations.model.RestaurantInfo;
 
 @SuppressWarnings({"PMD.AvoidInstanceofChecksInCatchClause", "PMD.PreserveStackTrace"})
 public class UpdateRestaurantAdminServiceImpl implements UpdateRestaurantAdminService {
@@ -23,10 +22,9 @@ public class UpdateRestaurantAdminServiceImpl implements UpdateRestaurantAdminSe
     }
 
     @Override
-    public void updateRestaurantAggregator(String restaurantId, RestaurantInfo restaurantInfo) {
-        SourceRequest request = new SourceRequest(restaurantInfo.restaurantTypes, restaurantInfo.state);
+    public void updateRestaurantServ(String restaurantId, RasPatchRequest rasPatchRequest) {
         try {
-            ras.updateRestaurant(restaurantId, request);
+            ras.updateRestaurant(restaurantId, rasPatchRequest);
         } catch (HttpStatusCodeException | JsonProcessingException exception) {
             if (exception instanceof HttpStatusCodeException) {
                 HttpStatusCodeException httpStatusCodeException = (HttpStatusCodeException) exception;

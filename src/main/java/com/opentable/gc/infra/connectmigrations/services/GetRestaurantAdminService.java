@@ -5,5 +5,5 @@ import java.io.IOException;
 import com.opentable.gc.infra.connectmigrations.model.GetRestaurantAdminServiceResponse;
 
 public interface GetRestaurantAdminService {
-    GetRestaurantAdminServiceResponse getGetRestaurantAggregatorResponse(String restaurantId) throws IOException;
+    GetRestaurantAdminServiceResponse getGetRestaurantResponse(String restaurantId) throws IOException;
 }

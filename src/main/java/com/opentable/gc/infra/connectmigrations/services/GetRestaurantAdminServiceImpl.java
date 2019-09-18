@@ -5,8 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.opentable.gc.infra.connectmigrations.clients.RestaurantAdminServiceClient;
-import com.opentable.gc.infra.connectmigrations.clients.SourceResponse;
 import com.opentable.gc.infra.connectmigrations.model.GetRestaurantAdminServiceResponse;
+import com.opentable.gc.infra.connectmigrations.util.Converter;
+import com.opentable.gc.infra.connectmigrations.model.dto.get.RasResponse;
 
 @SuppressWarnings({"PMD.AvoidInstanceofChecksInCatchClause", "PMD.PreserveStackTrace"})
 public class GetRestaurantAdminServiceImpl implements GetRestaurantAdminService {
@@ -21,20 +22,20 @@ public class GetRestaurantAdminServiceImpl implements GetRestaurantAdminService 
 
 
     @Override
-    public GetRestaurantAdminServiceResponse getGetRestaurantAggregatorResponse(String restaurantId) throws IOException {
+    public GetRestaurantAdminServiceResponse getGetRestaurantResponse(String restaurantId) throws IOException {
 
         RestaurantAdminServiceClient restaurantAdminServiceClient = ras;
             try {
-                SourceResponse rasResponse = restaurantAdminServiceClient.getRestaurant(restaurantId);
+                RasResponse rasResponse = restaurantAdminServiceClient.getRestaurant(restaurantId);
 
                 return GetRestaurantAdminServiceResponse.GetRestaurantTypeResponseBuilder.aGetRestaurantTypeResponse()
-                        .withRids(Integer.valueOf(rasResponse.getRid()))
-                        .withRestaurantTypes(rasResponse.getRestaurantType())
-                        .withTypeDescs(rasResponse.getTypeDesc())
-                        .withCountries(rasResponse.getCountry())
-                        .withRestaurantNames(rasResponse.getRestaurantName())
-                        .withState(Integer.valueOf(rasResponse.getStateId()))
-                        .withStateDescription(rasResponse.getStateDesc())
+                        .withRids(rasResponse.getCore().getRestaurant().getRestaurantId())
+                        .withRestaurantTypes(rasResponse.getCore().getRestaurant().getRestaurantType())
+                        .withTypeDescs(Converter.getTypeDescription(String.valueOf(rasResponse.getCore().getRestaurant().getRestaurantType())))
+                        .withCountries(rasResponse.getCore().getRestaurant().getCountryCode())
+                        .withRestaurantNames(rasResponse.getContent().getRestaurantLocal().getEnUS().getRestaurantName())
+                        .withState(rasResponse.getCore().getRestaurant().getRestaurantStateId())
+                        .withStateDescription(Converter.getStateDescription(String.valueOf(rasResponse.getCore().getRestaurant().getRestaurantStateId())))
                         .build();
 
             } catch (IOException io) {

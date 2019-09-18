@@ -1,11 +1,22 @@
-package com.opentable.gc.infra.connectmigrations.dto;
+package com.opentable.gc.infra.connectmigrations.model.dto.get;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Generated;
 
+@Generated("com.robohorse.robopojogenerator")
 public class Core{
+
+    @JsonProperty("amenities")
     private List<String> amenities;
+
+    @JsonProperty("restaurant")
     private Restaurant restaurant;
+
+    @JsonProperty("foodTypes")
     private FoodTypes foodTypes;
+
+    @JsonProperty("restaurantFeatures")
     private List<RestaurantFeaturesItem> restaurantFeatures;
 
     public void setAmenities(List<String> amenities){

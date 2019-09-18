@@ -1,8 +1,18 @@
-package com.opentable.gc.infra.connectmigrations.dto;
+package com.opentable.gc.infra.connectmigrations.model.dto.get;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Generated;
+
+@Generated("com.robohorse.robopojogenerator")
 public class RestaurantFeaturesItem{
+
+    @JsonProperty("feature")
     private String feature;
+
+    @JsonProperty("featureSet")
     private String featureSet;
+
+    @JsonProperty("valueBool")
     private boolean valueBool;
 
     public void setFeature(String feature){

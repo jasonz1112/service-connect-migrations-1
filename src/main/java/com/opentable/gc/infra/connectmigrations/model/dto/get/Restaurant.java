@@ -1,40 +1,114 @@
-package com.opentable.gc.infra.connectmigrations.dto;
+package com.opentable.gc.infra.connectmigrations.model.dto.get;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.annotation.Generated;
+
+@Generated("com.robohorse.robopojogenerator")
 public class Restaurant{
+
+    @JsonProperty("twitterAccountName")
     private String twitterAccountName;
+
+    @JsonProperty("dressCodeId")
     private int dressCodeId;
+
+    @JsonProperty("maxLargePartyID")
     private int maxLargePartyID;
+
+    @JsonProperty("latitude")
     private String latitude;
+
+    @JsonProperty("minOnlineOptionId")
     private int minOnlineOptionId;
+
+    @JsonProperty("ccAccountStatusID")
     private int ccAccountStatusID;
+
+    @JsonProperty("restaurantId")
     private int restaurantId;
+
+    @JsonProperty("acceptsWalkins")
     private boolean acceptsWalkins;
+
+    @JsonProperty("diningStyleId")
     private int diningStyleId;
+
+    @JsonProperty("neighborhoodId")
     private int neighborhoodId;
+
+    @JsonProperty("facebookUrl")
     private String facebookUrl;
+
+    @JsonProperty("countryCode")
     private String countryCode;
+
+    @JsonProperty("metroAreaId")
     private int metroAreaId;
+
+    @JsonProperty("restaurantType")
     private String restaurantType;
+
+    @JsonProperty("restaurantStateId")
     private int restaurantStateId;
+
+    @JsonProperty("email")
     private String email;
+
+    @JsonProperty("longitude")
     private String longitude;
+
+    @JsonProperty("smokingId")
     private int smokingId;
+
+    @JsonProperty("minCCPartySize")
     private int minCCPartySize;
+
+    @JsonProperty("minPartySize")
     private int minPartySize;
+
+    @JsonProperty("enablePrivateDining")
     private boolean enablePrivateDining;
+
+    @JsonProperty("privatePartyEmail")
     private String privatePartyEmail;
+
+    @JsonProperty("url")
     private String url;
+
+    @JsonProperty("priceBandId")
     private int priceBandId;
+
+    @JsonProperty("phoneNumber")
     private String phoneNumber;
+
+    @JsonProperty("showThirdPartyMenu")
     private int showThirdPartyMenu;
+
+    @JsonProperty("menuUrl")
     private String menuUrl;
+
+    @JsonProperty("domainName")
     private String domainName;
+
+    @JsonProperty("maxAdvanceDaysId")
     private int maxAdvanceDaysId;
+
+    @JsonProperty("restaurantFax")
     private String restaurantFax;
+
+    @JsonProperty("postCode")
     private String postCode;
+
+    @JsonProperty("hasPrivateParty")
     private boolean hasPrivateParty;
+
+    @JsonProperty("currencyCode")
     private String currencyCode;
+
+    @JsonProperty("publishPrivateDining")
     private boolean publishPrivateDining;
+
+    @JsonProperty("primaryLanguage")
     private String primaryLanguage;
 
     public void setTwitterAccountName(String twitterAccountName){

@@ -33,7 +33,7 @@ public class GetRestaurantAdminServiceController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'restaurantId' cannot be null or empty");
         }
 
-        return getRestaurantAdminService.getGetRestaurantAggregatorResponse(restaurantId);
+        return getRestaurantAdminService.getGetRestaurantResponse(restaurantId);
     }
 
 }
