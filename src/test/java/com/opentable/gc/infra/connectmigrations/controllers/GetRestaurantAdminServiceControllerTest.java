@@ -13,18 +13,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.opentable.gc.infra.connectmigrations.Main;
-import com.opentable.gc.infra.connectmigrations.model.GetRestaurantTypeResponse;
-import com.opentable.gc.infra.connectmigrations.services.GetRestaurantTypeService;
+import com.opentable.gc.infra.connectmigrations.model.GetRestaurantAdminServiceResponse;
+import com.opentable.gc.infra.connectmigrations.services.GetRestaurantAdminService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Main.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GetRestaurantTypeControllerTest {
+public class GetRestaurantAdminServiceControllerTest {
 
     @Inject
     private TestRestTemplate testRestTemplate;
 
     @MockBean
-    private GetRestaurantTypeService getRestaurantTypeService;
+    private GetRestaurantAdminService getRestaurantAdminService;
 
     /**
      * Test for /restaurant/rid path
@@ -32,13 +32,13 @@ public class GetRestaurantTypeControllerTest {
     @Test
     public void testRestaurantPathMockService() throws IOException {
 
-        GetRestaurantTypeResponse expectedGetRestaurantTypeResponse = new GetRestaurantTypeResponse(
+        GetRestaurantAdminServiceResponse expectedGetRestaurantAdminServiceResponse = new GetRestaurantAdminServiceResponse(
                 190624, "C", "Guest Center Restaurant", "1.0", "US", "Guest Center - Keivan Bagheri", 1, "Active");
 
-        Mockito.when(getRestaurantTypeService.getGetRestaurantAggregatorResponse("1")).thenReturn(expectedGetRestaurantTypeResponse);
-        ResponseEntity<GetRestaurantTypeResponse> actualResponse = testRestTemplate.getForEntity("/restaurants/1", GetRestaurantTypeResponse.class);
+        Mockito.when(getRestaurantAdminService.getGetRestaurantAggregatorResponse("1")).thenReturn(expectedGetRestaurantAdminServiceResponse);
+        ResponseEntity<GetRestaurantAdminServiceResponse> actualResponse = testRestTemplate.getForEntity("/restaurants/1", GetRestaurantAdminServiceResponse.class);
         assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(actualResponse.getBody()).isEqualTo(expectedGetRestaurantTypeResponse);
+        assertThat(actualResponse.getBody()).isEqualTo(expectedGetRestaurantAdminServiceResponse);
     }
 
 

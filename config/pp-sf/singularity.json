@@ -2,7 +2,7 @@
   "requestId": "pp-service-connect-migrations",
   "resources": {
     "cpus": 0.1,
-    "memoryMb": 1024,
+    "memoryMb": 4096,
     "numPorts": 3
   },
   "healthcheck": {

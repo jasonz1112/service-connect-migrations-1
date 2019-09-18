@@ -1,19 +1,20 @@
 package com.opentable.gc.infra.connectmigrations.clients;
 
 public class SourceRequest {
-    private final String email;
-    private final String phoneNumber;
 
-    public SourceRequest(String email, String phoneNumber) {
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+    public final String restaurantTypes;
+    public final String state;
+
+    public SourceRequest(String restaurantTypes, String state) {
+        this.restaurantTypes = restaurantTypes;
+        this.state = state;
     }
 
-    public String getEmail() {
-        return email;
+    public String getRestaurantTypes() {
+        return restaurantTypes;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getState() {
+        return state;
     }
 }

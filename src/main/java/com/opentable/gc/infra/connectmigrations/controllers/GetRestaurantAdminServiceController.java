@@ -12,28 +12,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.opentable.gc.infra.connectmigrations.model.GetRestaurantTypeResponse;
-import com.opentable.gc.infra.connectmigrations.services.GetRestaurantTypeService;
+import com.opentable.gc.infra.connectmigrations.model.GetRestaurantAdminServiceResponse;
+import com.opentable.gc.infra.connectmigrations.services.GetRestaurantAdminService;
 
 
 @RequestMapping("/restaurants")
 @RestController
-public class GetRestaurantTypeController {
+public class GetRestaurantAdminServiceController {
 
-    private final GetRestaurantTypeService getRestaurantTypeService;
+    private final GetRestaurantAdminService getRestaurantAdminService;
 
-    public GetRestaurantTypeController(@Qualifier("agg1") GetRestaurantTypeService getRestaurantTypeService) {
-        this.getRestaurantTypeService = getRestaurantTypeService;
+    public GetRestaurantAdminServiceController(@Qualifier("agg1") GetRestaurantAdminService getRestaurantAdminService) {
+        this.getRestaurantAdminService = getRestaurantAdminService;
     }
 
     @GetMapping("/{restaurantId}")
-    public GetRestaurantTypeResponse getRestaurant(@PathVariable("restaurantId") String restaurantId) throws IOException {
+    public GetRestaurantAdminServiceResponse getRestaurant(@PathVariable("restaurantId") String restaurantId) throws IOException {
 
         if (StringUtils.isEmpty(restaurantId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'restaurantId' cannot be null or empty");
         }
 
-        return getRestaurantTypeService.getGetRestaurantAggregatorResponse(restaurantId);
+        return getRestaurantAdminService.getGetRestaurantAggregatorResponse(restaurantId);
     }
 
 }

@@ -20,7 +20,7 @@
     <groupId>com.opentable.gc.infra</groupId>
     <artifactId>service-connect-migrations</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <description>Automatically generated description, fill me in!</description>
+    <description>new Java service to enable change of restaurant type</description>
 
     <properties>
         <ot.mainclass>com.opentable.gc.infra.connectmigrations.Main</ot.mainclass>

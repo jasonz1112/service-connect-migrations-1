@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestTemplate;
 
-import com.opentable.gc.infra.connectmigrations.clients.config.RestaurantTypeSourceClientConfiguration;
-import com.opentable.gc.infra.connectmigrations.configuration.GetRestaurantTypeConfiguration;
-import com.opentable.gc.infra.connectmigrations.configuration.UpdateRestaurantTypeConfiguration;
-import com.opentable.gc.infra.connectmigrations.controllers.GetRestaurantTypeController;
-import com.opentable.gc.infra.connectmigrations.controllers.UpdateRestaurantTypeController;
+import com.opentable.gc.infra.connectmigrations.clients.config.RestaurantAdminServiceSourceClientConfiguration;
+import com.opentable.gc.infra.connectmigrations.configuration.GetRestaurantAdminServiceConfiguration;
+import com.opentable.gc.infra.connectmigrations.configuration.UpdateRestaurantAdminServiceConfiguration;
+import com.opentable.gc.infra.connectmigrations.controllers.GetRestaurantAdminServiceController;
+import com.opentable.gc.infra.connectmigrations.controllers.UpdateRestaurantAdminServiceController;
 
 import com.opentable.resttemplate.RestTemplateConfiguration;
 import com.opentable.resttemplate.RestTemplateFactory;
@@ -23,11 +23,11 @@ import com.opentable.service.discovery.client.EnableDiscoveryClient;
 @MVCServer
 @EnableDiscoveryClient
 @Import({RestTemplateConfiguration.class,
-        GetRestaurantTypeController.class,
-        GetRestaurantTypeConfiguration.class,
-        RestaurantTypeSourceClientConfiguration.class,
-        UpdateRestaurantTypeController.class,
-        UpdateRestaurantTypeConfiguration.class})
+        GetRestaurantAdminServiceController.class,
+        GetRestaurantAdminServiceConfiguration.class,
+        RestaurantAdminServiceSourceClientConfiguration.class,
+        UpdateRestaurantAdminServiceController.class,
+        UpdateRestaurantAdminServiceConfiguration.class})
 public class Main {
     public static void main(final String[] args) {
         OTApplication.run(Main.class, args);

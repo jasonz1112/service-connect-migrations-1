@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-public interface RestaurantTypeClient {
+public interface RestaurantAdminServiceClient {
 
     SourceResponse getRestaurant(String restaurantId) throws IOException;
 

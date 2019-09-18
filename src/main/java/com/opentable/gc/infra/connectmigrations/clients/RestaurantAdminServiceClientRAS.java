@@ -19,13 +19,14 @@ import org.springframework.web.client.RestTemplate;
 
 import com.opentable.gc.infra.connectmigrations.clients.config.SourceConfiguration;
 
-public class RestaurantTypeClientVenue implements RestaurantTypeClient {
+public class RestaurantAdminServiceClientRAS implements RestaurantAdminServiceClient {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RestaurantTypeClientVenue.class);
+    private final String path = "/restaurant-admin/v2/restaurants/";
+    private static final Logger LOG = LoggerFactory.getLogger(RestaurantAdminServiceClientRAS.class);
     private final SourceConfiguration config;
     private final RestTemplate restTemplate;
 
-    public RestaurantTypeClientVenue(SourceConfiguration config, RestTemplate restTemplate) {
+    public RestaurantAdminServiceClientRAS(SourceConfiguration config, RestTemplate restTemplate) {
         this.config = config;
         this.restTemplate = restTemplate;
     }
@@ -33,7 +34,7 @@ public class RestaurantTypeClientVenue implements RestaurantTypeClient {
     @Override
     public SourceResponse getRestaurant(String restaurantId) throws IOException {
         StringBuilder queryUrl = new StringBuilder(config.getUrl());
-        queryUrl.append('/');
+        queryUrl.append(path);
         queryUrl.append(restaurantId);
         try {
             return config.getExtractor().extract(restTemplate.getForEntity(queryUrl.toString(), String.class).getBody());

@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class GetRestaurantTypeResponse {
+public class GetRestaurantAdminServiceResponse {
 
     public final int rids;
     public final String restaurantTypes;
@@ -18,7 +18,7 @@ public class GetRestaurantTypeResponse {
 
 
     @JsonCreator
-    public GetRestaurantTypeResponse(
+    public GetRestaurantAdminServiceResponse(
             @JsonProperty("rid") int rids,
             @JsonProperty("type") String restaurantTypes,
             @JsonProperty("typeDescription") String typeDescs,
@@ -40,7 +40,7 @@ public class GetRestaurantTypeResponse {
 
     @Override
     public String toString() {
-        return "GetRestaurantTypeResponse{" +
+        return "GetRestaurantAdminServiceResponse{" +
                 "rid=" + rids +
                 ", type=" + restaurantTypes +
                 ", typeDescription=" + typeDescs +
@@ -62,7 +62,7 @@ public class GetRestaurantTypeResponse {
             return false;
         }
 
-        GetRestaurantTypeResponse that = (GetRestaurantTypeResponse) o;
+        GetRestaurantAdminServiceResponse that = (GetRestaurantAdminServiceResponse) o;
         return rids == that.rids &&
                 restaurantTypes.equals(that.restaurantTypes) &&
                 typeDescs.equals(that.typeDescs) &&
@@ -76,5 +76,68 @@ public class GetRestaurantTypeResponse {
     @Override
     public int hashCode() {
         return Objects.hash(rids, restaurantTypes, typeDescs, countries, restaurantNames, state, stateDescription);
+    }
+
+
+    public static final class GetRestaurantTypeResponseBuilder {
+        public int rids;
+        public String restaurantTypes;
+        public String typeDescs;
+        public String countries;
+        public String restaurantNames;
+        public String version;
+        public int state;
+        public String stateDescription;
+
+        private GetRestaurantTypeResponseBuilder() {
+        }
+
+        public static GetRestaurantTypeResponseBuilder aGetRestaurantTypeResponse() {
+            return new GetRestaurantTypeResponseBuilder();
+        }
+
+        public GetRestaurantTypeResponseBuilder withRids(int rids) {
+            this.rids = rids;
+            return this;
+        }
+
+        public GetRestaurantTypeResponseBuilder withRestaurantTypes(String restaurantTypes) {
+            this.restaurantTypes = restaurantTypes;
+            return this;
+        }
+
+        public GetRestaurantTypeResponseBuilder withTypeDescs(String typeDescs) {
+            this.typeDescs = typeDescs;
+            return this;
+        }
+
+        public GetRestaurantTypeResponseBuilder withCountries(String countries) {
+            this.countries = countries;
+            return this;
+        }
+
+        public GetRestaurantTypeResponseBuilder withRestaurantNames(String restaurantNames) {
+            this.restaurantNames = restaurantNames;
+            return this;
+        }
+
+        public GetRestaurantTypeResponseBuilder withVersion(String version) {
+            this.version = version;
+            return this;
+        }
+
+        public GetRestaurantTypeResponseBuilder withState(int state) {
+            this.state = state;
+            return this;
+        }
+
+        public GetRestaurantTypeResponseBuilder withStateDescription(String stateDescription) {
+            this.stateDescription = stateDescription;
+            return this;
+        }
+
+        public GetRestaurantAdminServiceResponse build() {
+            return new GetRestaurantAdminServiceResponse(rids, restaurantTypes, typeDescs, version, countries, restaurantNames, state, stateDescription);
+        }
     }
 }

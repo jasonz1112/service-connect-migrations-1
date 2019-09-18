@@ -6,17 +6,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RestaurantInfo {
 
-    public final String email;
-    public final String phone;
+    public final String restaurantTypes;
+    public final String state;
 
     @JsonCreator
-    public RestaurantInfo(@JsonProperty("email") String email, @JsonProperty("phone") String phone) {
-        this.email = email;
-        this.phone = phone;
+    public RestaurantInfo(@JsonProperty("restaurantStateId") String state, @JsonProperty("restaurantType") String restaurantTypes) {
+        this.state = state;
+        this.restaurantTypes = restaurantTypes;
     }
 
     @JsonIgnore
     public boolean isInvalid() {
-        return (email == null || email.isEmpty()) && (phone == null || phone.isEmpty());
+        return restaurantTypes == null && state == null;
     }
 }

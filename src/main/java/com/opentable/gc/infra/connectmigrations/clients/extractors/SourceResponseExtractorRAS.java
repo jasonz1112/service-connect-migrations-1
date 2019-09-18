@@ -12,10 +12,10 @@ import org.slf4j.LoggerFactory;
 import com.opentable.gc.infra.connectmigrations.clients.SourceResponse;
 import com.opentable.gc.infra.connectmigrations.util.Converter;
 
-public class SourceResponseExtractorVenue implements SourceResponseExtractor {
+public class SourceResponseExtractorRAS implements SourceResponseExtractor {
 
 
-    private static final Logger LOG = LoggerFactory.getLogger(SourceResponseExtractorVenue.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SourceResponseExtractorRAS.class);
 
 
     @Override

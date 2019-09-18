@@ -8,25 +8,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.opentable.gc.infra.connectmigrations.clients.RestaurantTypeClient;
+import com.opentable.gc.infra.connectmigrations.clients.RestaurantAdminServiceClient;
 import com.opentable.gc.infra.connectmigrations.clients.SourceRequest;
 import com.opentable.gc.infra.connectmigrations.model.RestaurantInfo;
 
 @SuppressWarnings({"PMD.AvoidInstanceofChecksInCatchClause", "PMD.PreserveStackTrace"})
-public class UpdateRestaurantTypeServiceImpl implements UpdateRestaurantTypeService {
+public class UpdateRestaurantAdminServiceImpl implements UpdateRestaurantAdminService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UpdateRestaurantTypeServiceImpl.class);
-    private final RestaurantTypeClient venue;
+    private static final Logger LOGGER = LoggerFactory.getLogger(UpdateRestaurantAdminServiceImpl.class);
+    private final RestaurantAdminServiceClient ras;
 
-    public UpdateRestaurantTypeServiceImpl(RestaurantTypeClient venue) {
-        this.venue = venue;
+    public UpdateRestaurantAdminServiceImpl(RestaurantAdminServiceClient ras) {
+        this.ras = ras;
     }
 
     @Override
     public void updateRestaurantAggregator(String restaurantId, RestaurantInfo restaurantInfo) {
-        SourceRequest request = new SourceRequest(restaurantInfo.email, restaurantInfo.phone);
+        SourceRequest request = new SourceRequest(restaurantInfo.restaurantTypes, restaurantInfo.state);
         try {
-            venue.updateRestaurant(restaurantId, request);
+            ras.updateRestaurant(restaurantId, request);
         } catch (HttpStatusCodeException | JsonProcessingException exception) {
             if (exception instanceof HttpStatusCodeException) {
                 HttpStatusCodeException httpStatusCodeException = (HttpStatusCodeException) exception;
