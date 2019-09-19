@@ -8,7 +8,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.opentable.gc.infra.connectmigrations.model.dto.update.RasPatchRequest;
 import com.opentable.gc.infra.connectmigrations.clients.RestaurantAdminServiceClient;
 
-
 @SuppressWarnings({"PMD.AvoidInstanceofChecksInCatchClause", "PMD.PreserveStackTrace"})
 public class UpdateRestaurantAdminServiceImpl implements UpdateRestaurantAdminService {
 
@@ -20,7 +19,7 @@ public class UpdateRestaurantAdminServiceImpl implements UpdateRestaurantAdminSe
     }
 
     @Override
-    public void updateRestaurantServ(String restaurantId, RasPatchRequest rasPatchRequest) {
+    public void updateRestaurantService(String restaurantId, RasPatchRequest rasPatchRequest) {
         try {
             ras.updateRestaurant(restaurantId, rasPatchRequest);
         } catch (HttpStatusCodeException exception) {

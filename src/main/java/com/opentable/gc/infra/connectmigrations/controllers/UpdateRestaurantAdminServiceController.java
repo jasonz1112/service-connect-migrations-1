@@ -22,7 +22,7 @@ public class UpdateRestaurantAdminServiceController {
 
     @RequestMapping(value="/{restaurantId}", method=RequestMethod.PATCH)
     public void updateRestaurant(@PathVariable("restaurantId") String restaurantId, @RequestBody RasPatchRequest rasPatchRequest) {
-        updateRestaurantAdminService.updateRestaurantServ(restaurantId, rasPatchRequest);
+        updateRestaurantAdminService.updateRestaurantService(restaurantId, rasPatchRequest);
     }
 
 }

@@ -24,10 +24,8 @@ import com.opentable.gc.infra.connectmigrations.model.dto.get.RasResponse;
 @SpringBootTest(classes = Main.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class GetRestaurantAdminServiceTest {
 
-
-    @MockBean(name = "rasClient")
+    @MockBean()
     private RestaurantAdminServiceClient rasClient;
-
 
     /**
      * Test for /restaurant/1 path

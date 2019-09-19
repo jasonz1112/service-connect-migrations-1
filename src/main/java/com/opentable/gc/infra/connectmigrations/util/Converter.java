@@ -7,27 +7,12 @@ public final class Converter {
     }
 
     public static String getTypeDescription(String restaurantType) {
-        if ("C".equals(restaurantType)) {
-            return "Guest Center Restaurant";
+        for (TypeDescription td : TypeDescription.values()) {
+            if (restaurantType.equals(td.name())) {
+                return td.getDescription();
+            }
         }
-        else if ("P".equals(restaurantType)) {
-            return "Connect 2.0 (GuestCenter Connect / OTC)";
-        }
-        else if ("E".equals(restaurantType)) {
-            return "ERB";
-        }
-        else if ("G".equals(restaurantType)) {
-            return "GuestBridge";
-        }
-        else if ("I".equals(restaurantType)) {
-            return "Restaurant API";
-        }
-        else if ("L".equals(restaurantType)) {
-            return "Listing";
-        }
-        else {
-            return "no description found for the given type";
-        }
+        return "no description found for the given type";
     }
 
     public static String getStateDescription(String stateId) {

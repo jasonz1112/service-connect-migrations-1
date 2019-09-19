@@ -9,6 +9,8 @@ import com.opentable.gc.infra.connectmigrations.model.GetRestaurantAdminServiceR
 import com.opentable.gc.infra.connectmigrations.util.Converter;
 import com.opentable.gc.infra.connectmigrations.model.dto.get.RasResponse;
 
+import java.util.Optional;
+
 @SuppressWarnings({"PMD.AvoidInstanceofChecksInCatchClause", "PMD.PreserveStackTrace"})
 public class GetRestaurantAdminServiceImpl implements GetRestaurantAdminService {
 
@@ -23,26 +25,27 @@ public class GetRestaurantAdminServiceImpl implements GetRestaurantAdminService 
 
     @Override
     public GetRestaurantAdminServiceResponse getGetRestaurantResponse(String restaurantId) {
+        try {
+            RasResponse rasResponse = ras.getRestaurant(restaurantId);
 
-        RestaurantAdminServiceClient restaurantAdminServiceClient = ras;
-            try {
-                RasResponse rasResponse = restaurantAdminServiceClient.getRestaurant(restaurantId);
 
-                return GetRestaurantAdminServiceResponse.GetRestaurantTypeResponseBuilder.aGetRestaurantTypeResponse()
-                        .withRids(rasResponse.getCore().getRestaurant().getRestaurantId())
-                        .withRestaurantTypes(rasResponse.getCore().getRestaurant().getRestaurantType())
-                        .withTypeDescs(Converter.getTypeDescription(String.valueOf(rasResponse.getCore().getRestaurant().getRestaurantType())))
-                        .withCountries(rasResponse.getCore().getRestaurant().getCountryCode())
-                        .withRestaurantNames(rasResponse.getContent().getRestaurantLocal().getEnUS().getRestaurantName())
-                        .withState(rasResponse.getCore().getRestaurant().getRestaurantStateId())
-                        .withStateDescription(Converter.getStateDescription(String.valueOf(rasResponse.getCore().getRestaurant().getRestaurantStateId())))
-                        .build();
+            Optional<RasResponse> rasResponseOptional = Optional.ofNullable(rasResponse);
 
-            }
-            catch (HttpStatusCodeException exception) {
-                LOG.error(exception.getMessage());
-                throw exception;
-            }
+            return GetRestaurantAdminServiceResponse.GetRestaurantTypeResponseBuilder.aGetRestaurantTypeResponse()
+                    .withRids(rasResponseOptional.map(x -> x.getCore()).map(x -> x.getRestaurant()).map(x -> x.getRestaurantId()).orElse(0))
+                    .withRestaurantTypes(rasResponseOptional.map(x -> x.getCore()).map(x -> x.getRestaurant()).map(x -> x.getRestaurantType()).orElse(null))
+                    .withTypeDescs(Converter.getTypeDescription(String.valueOf(rasResponseOptional.map(x -> x.getCore()).map(x -> x.getRestaurant()).map(x -> x.getRestaurantType()).orElse(null))))
+                    .withCountries(rasResponseOptional.map(x -> x.getCore()).map(x -> x.getRestaurant()).map(x -> x.getCountryCode()).orElse(null))
+                    .withRestaurantNames(rasResponseOptional.map(x -> x.getContent()).map(x -> x.getRestaurantLocal()).map(x -> x.getEnUS()).map(x -> x.getRestaurantName()).orElse(null))
+                    .withState(rasResponseOptional.map(x -> x.getCore()).map(x -> x.getRestaurant()).map(x -> x.getRestaurantStateId()).orElse(0))
+                    .withStateDescription(Converter.getStateDescription(String.valueOf(rasResponseOptional.map(x -> x.getCore()).map(x -> x.getRestaurant()).map(x -> x.getRestaurantStateId()).orElse(0))))
+                    .build();
+
+        }
+        catch (HttpStatusCodeException exception) {
+            LOG.error(exception.getMessage());
+            throw exception;
+        }
 
     }
 }

@@ -4,6 +4,7 @@ package com.opentable.gc.infra.connectmigrations;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
 import com.opentable.gc.infra.connectmigrations.clients.config.ClientConfiguration;
@@ -33,12 +34,15 @@ public class Main {
         OTApplication.run(Main.class, args);
     }
 
+    @Value("${connect.migrations.service.name}")
+    private String serviceName;
+
     @Bean
     public ServiceInfo serviceInfo() {
         return new ServiceInfo() {
             @Override
             public String getName() {
-                return "service connect migrations for restaurants type";
+                return serviceName;
             }
         };
     }
