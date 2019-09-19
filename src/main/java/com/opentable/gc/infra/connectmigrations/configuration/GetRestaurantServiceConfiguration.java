@@ -7,18 +7,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import com.opentable.gc.infra.connectmigrations.clients.RestaurantAdminServiceClient;
-import com.opentable.gc.infra.connectmigrations.clients.config.RestaurantAdminServiceSourceClientConfiguration;
+import com.opentable.gc.infra.connectmigrations.clients.config.ClientConfiguration;
 import com.opentable.gc.infra.connectmigrations.services.GetRestaurantAdminService;
 import com.opentable.gc.infra.connectmigrations.services.GetRestaurantAdminServiceImpl;
 
 @Import({
-        RestaurantAdminServiceSourceClientConfiguration.class
+        ClientConfiguration.class
 })
 @Configuration
-public class GetRestaurantAdminServiceConfiguration {
+public class GetRestaurantServiceConfiguration {
 
-    @Bean("agg1")
-    public GetRestaurantAdminService getRestaurantService(@Qualifier("rasRestaurantTypeSourceClient") RestaurantAdminServiceClient rasClient) {
+    @Bean("get-bean")
+    public GetRestaurantAdminService getRestaurantService(@Qualifier("RestaurantAdminServiceClient") RestaurantAdminServiceClient rasClient) {
         return new GetRestaurantAdminServiceImpl(rasClient);
     }
 

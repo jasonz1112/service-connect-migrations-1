@@ -1,8 +1,8 @@
 package com.opentable.gc.infra.connectmigrations.services;
 
-import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.client.HttpStatusCodeException;
 
 import com.opentable.gc.infra.connectmigrations.clients.RestaurantAdminServiceClient;
 import com.opentable.gc.infra.connectmigrations.model.GetRestaurantAdminServiceResponse;
@@ -22,7 +22,7 @@ public class GetRestaurantAdminServiceImpl implements GetRestaurantAdminService 
 
 
     @Override
-    public GetRestaurantAdminServiceResponse getGetRestaurantResponse(String restaurantId) throws IOException {
+    public GetRestaurantAdminServiceResponse getGetRestaurantResponse(String restaurantId) {
 
         RestaurantAdminServiceClient restaurantAdminServiceClient = ras;
             try {
@@ -38,9 +38,11 @@ public class GetRestaurantAdminServiceImpl implements GetRestaurantAdminService 
                         .withStateDescription(Converter.getStateDescription(String.valueOf(rasResponse.getCore().getRestaurant().getRestaurantStateId())))
                         .build();
 
-            } catch (IOException io) {
-                LOG.error(io.getMessage());
-                throw io;
             }
+            catch (HttpStatusCodeException exception) {
+                LOG.error(exception.getMessage());
+                throw exception;
+            }
+
     }
 }

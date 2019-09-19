@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestTemplate;
 
-import com.opentable.gc.infra.connectmigrations.clients.config.RestaurantAdminServiceSourceClientConfiguration;
-import com.opentable.gc.infra.connectmigrations.configuration.GetRestaurantAdminServiceConfiguration;
-import com.opentable.gc.infra.connectmigrations.configuration.UpdateRestaurantAdminServiceConfiguration;
+import com.opentable.gc.infra.connectmigrations.clients.config.ClientConfiguration;
+import com.opentable.gc.infra.connectmigrations.configuration.GetRestaurantServiceConfiguration;
+import com.opentable.gc.infra.connectmigrations.configuration.UpdateRestaurantServiceConfiguration;
 import com.opentable.gc.infra.connectmigrations.controllers.GetRestaurantAdminServiceController;
 import com.opentable.gc.infra.connectmigrations.controllers.UpdateRestaurantAdminServiceController;
 
@@ -24,10 +24,10 @@ import com.opentable.service.discovery.client.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @Import({RestTemplateConfiguration.class,
         GetRestaurantAdminServiceController.class,
-        GetRestaurantAdminServiceConfiguration.class,
-        RestaurantAdminServiceSourceClientConfiguration.class,
+        GetRestaurantServiceConfiguration.class,
+        ClientConfiguration.class,
         UpdateRestaurantAdminServiceController.class,
-        UpdateRestaurantAdminServiceConfiguration.class})
+        UpdateRestaurantServiceConfiguration.class})
 public class Main {
     public static void main(final String[] args) {
         OTApplication.run(Main.class, args);

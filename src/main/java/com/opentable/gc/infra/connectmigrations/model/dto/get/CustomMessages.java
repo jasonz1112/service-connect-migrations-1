@@ -1,9 +1,9 @@
 package com.opentable.gc.infra.connectmigrations.model.dto.get;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import javax.annotation.Generated;
 
-@Generated("com.robohorse.robopojogenerator")
+
+
 public class CustomMessages{
 
     @JsonProperty("RestaurantDescription")

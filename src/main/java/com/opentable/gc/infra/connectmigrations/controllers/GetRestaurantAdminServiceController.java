@@ -1,8 +1,5 @@
 package com.opentable.gc.infra.connectmigrations.controllers;
 
-
-import java.io.IOException;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -22,12 +19,12 @@ public class GetRestaurantAdminServiceController {
 
     private final GetRestaurantAdminService getRestaurantAdminService;
 
-    public GetRestaurantAdminServiceController(@Qualifier("agg1") GetRestaurantAdminService getRestaurantAdminService) {
+    public GetRestaurantAdminServiceController(@Qualifier("get-bean") GetRestaurantAdminService getRestaurantAdminService) {
         this.getRestaurantAdminService = getRestaurantAdminService;
     }
 
     @GetMapping("/{restaurantId}")
-    public GetRestaurantAdminServiceResponse getRestaurant(@PathVariable("restaurantId") String restaurantId) throws IOException {
+    public GetRestaurantAdminServiceResponse getRestaurant(@PathVariable("restaurantId") String restaurantId) {
 
         if (StringUtils.isEmpty(restaurantId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The 'restaurantId' cannot be null or empty");

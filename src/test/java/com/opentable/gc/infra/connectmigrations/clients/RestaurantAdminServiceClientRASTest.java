@@ -36,7 +36,7 @@ public class RestaurantAdminServiceClientRASTest {
     @ClassRule
     public static WireMockRule mockServer = new WireMockRule(WireMockConfiguration.wireMockConfig().port(11234));
     @Autowired
-    @Qualifier("rasRestaurantTypeSourceClient")
+    @Qualifier("RestaurantAdminServiceClient")
     RestaurantAdminServiceClient ras;
     @Autowired
     DiscoveryClient discoveryClient;

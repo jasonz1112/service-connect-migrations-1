@@ -1,6 +1,6 @@
 package com.opentable.gc.infra.connectmigrations.clients.config;
 
-public class SourceConfiguration {
+public class Configuration {
 
 
     private final String url;
@@ -9,7 +9,7 @@ public class SourceConfiguration {
     private final int maxDelay;
     private final int maxRetries;
 
-    public SourceConfiguration(String url, int delay, int maxDelay, int maxRetries) {
+    public Configuration(String url, int delay, int maxDelay, int maxRetries) {
         this.url = url;
         this.delay = delay;
         this.maxDelay = maxDelay;

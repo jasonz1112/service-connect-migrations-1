@@ -13,7 +13,7 @@ import com.opentable.resttemplate.RestTemplateFactory;
 @Import({
         RestTemplateConfiguration.class
 })
-public class RestaurantAdminServiceSourceClientConfiguration {
+public class ClientConfiguration {
 
 
     @Value("${restaurant.sources.ras.url}")
@@ -29,8 +29,8 @@ public class RestaurantAdminServiceSourceClientConfiguration {
     private int rasMaxRetries;
 
 
-    public SourceConfiguration rasSourceConfiguration() {
-        return new SourceConfiguration(
+    public Configuration rasSourceConfiguration() {
+        return new Configuration(
                 rasUrl,
                 rasRetryDelay,
                 rasRetryMaxDelay,
@@ -38,7 +38,7 @@ public class RestaurantAdminServiceSourceClientConfiguration {
         );
     }
 
-    @Bean("rasRestaurantTypeSourceClient")
+    @Bean("RestaurantAdminServiceClient")
     public RestaurantAdminServiceClient rasClient(RestTemplateFactory factory) {
         return new RestaurantAdminServiceClientRAS(rasSourceConfiguration(), factory.newTemplate());
     }

@@ -1,0 +1,3 @@
+ot.discovery.mode=OT
+ot.discovery.servers=proxy://discovery-prod-sc.otenv.com
+ot.discovery.announce.local-environment=prod-sc

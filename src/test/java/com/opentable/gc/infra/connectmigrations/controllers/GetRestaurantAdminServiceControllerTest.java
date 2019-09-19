@@ -41,5 +41,17 @@ public class GetRestaurantAdminServiceControllerTest {
         assertThat(actualResponse.getBody()).isEqualTo(expectedGetRestaurantAdminServiceResponse);
     }
 
+    @Test
+    public void testRestaurantPathNotFound404() {
+
+        GetRestaurantAdminServiceResponse getRestaurantAdminServiceResponse = new GetRestaurantAdminServiceResponse(
+                190624, "C", "Guest Center Restaurant", "1.0", "US", "Guest Center - Keivan Bagheri", 1, "Active");
+
+        Mockito.when(getRestaurantAdminService.getGetRestaurantResponse("1")).thenReturn(getRestaurantAdminServiceResponse);
+
+        ResponseEntity<GetRestaurantAdminServiceResponse> actualResponse = testRestTemplate.getForEntity("/restaurants/", GetRestaurantAdminServiceResponse.class);
+        assertThat(actualResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+    }
+
 
 }
