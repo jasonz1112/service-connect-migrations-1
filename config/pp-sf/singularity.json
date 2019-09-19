@@ -1,0 +1,13 @@
+{
+  "requestId": "pp-service-connect-migrations",
+  "resources": {
+    "cpus": 0.1,
+    "memoryMb": 2048,
+    "numPorts": 3
+  },
+  "healthcheck": {
+    "startupTimeoutSeconds": 65,
+    "startupDelaySeconds": 20,
+    "maxRetries": 15
+  }
+}
