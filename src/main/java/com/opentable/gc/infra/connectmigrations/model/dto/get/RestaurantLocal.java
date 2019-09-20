@@ -4,7 +4,19 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 
 public class RestaurantLocal{
 
-    @JsonAlias({"en-US", "ja-JP"})
+    @JsonAlias({"en-GB",
+            "en-US",
+            "de-DE",
+            "en-AU",
+            "en-CA",
+            "en-GB",
+            "en-IE",
+            "en-US",
+            "es-MX",
+            "fr-CA",
+            "ja-JP",
+            "de-DE",
+            "fr-FR"})
     private EnUS enUS;
 
     public void setEnUS(EnUS enUS){
