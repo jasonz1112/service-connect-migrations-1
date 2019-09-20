@@ -1,12 +1,10 @@
 package com.opentable.gc.infra.connectmigrations.model.dto.get;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-
+import com.fasterxml.jackson.annotation.JsonAlias;
 
 public class RestaurantLocal{
 
-    @JsonProperty("en-US")
+    @JsonAlias({"en-US", "ja-JP"})
     private EnUS enUS;
 
     public void setEnUS(EnUS enUS){
