@@ -1,0 +1,11 @@
+{
+  "id": "ci-service-connect-migrations",
+  "instances": 1,
+  "requestType": "SERVICE",
+  "owners": [
+    "gc-ops-infra-low-urgency@opentable.pagerduty.com"
+  ],
+  "rackSensitive": false,
+  "slavePlacement": "SEPARATE",
+  "loadBalanced": false
+}
