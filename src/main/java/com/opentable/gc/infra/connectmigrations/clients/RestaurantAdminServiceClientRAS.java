@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -46,6 +47,11 @@ public class RestaurantAdminServiceClientRAS implements RestaurantAdminServiceCl
                 .build();
         try {
             ResponseEntity<String> result = restTemplate.getForEntity(uri.toString(), String.class);
+
+            while(result.getHeaders().getLocation() != null && result.getStatusCode() == HttpStatus.TEMPORARY_REDIRECT) {
+                result = restTemplate.getForEntity(result.getHeaders().getLocation().toString(), String.class);
+            }
+
             String responseStr = result.getBody();
             rasResponse = objectMapper.readValue(responseStr, RasResponse.class);
             return rasResponse;
